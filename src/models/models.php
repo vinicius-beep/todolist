@@ -1,6 +1,6 @@
 <?php
     // Retorna as tarefas da sessão ou inicia um array vazio
-    function getTaskx(){
+    function getTasks(){
         // Digite o seu código aqui
         return $_SESSION['tasks'] ?? [];
     }
@@ -25,6 +25,7 @@
         foreach($tasks as $index => $task){
             if($task['id'] == $id){
                 $tasks[$index]['completed'] = !$task['completed'];
+                break;
             }
         }
         $_SESSION['tasks'] = $tasks;
