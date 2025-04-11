@@ -36,7 +36,26 @@
           <?php if(empty($tasks)): ?>
          <li class="list-group-item text-center text-mutted">
           Nenhuma tarefa adicionada
-         </li>
+          <?php else: ?>
+            <?php foreach($tasks as $task):?>
+              <li class="list-group-item d-flex align-items-center">
+          <form action="" class="me-3">
+            <input type="hidden" name="action"
+            value="toggle">
+            <input type="hidden"
+            name="id"
+            value="<?= $task['id'] ?>">
+            <input type="checkbox"class="form-check-input"onchange="this.form.submit()"
+            <?=$task['completed'] ? 'checked' : '' ?>>
+
+          </form>
+<span>
+<?=htmlspecialchars($task['description']) ?>
+
+</span>
+</li>
+<?php endforeach; ?>
+         
          <?php endif; ?>
 
         </ul> 
